@@ -16,7 +16,7 @@ public class Prueba_chat {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        1. Hola
+        //1. Hola
     }
     
 }
