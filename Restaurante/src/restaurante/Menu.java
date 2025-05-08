@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package restaurante;
-import java.util.ArrayList;
+import java.util.ArrayList; //Se importa ArrayList para tener las listas de la comida
+import java.util.Scanner; //Se importa Scanner para que se pueda elegir las opciones de listas de comida
 /**
  *
  * @author Esteban Ricardo
@@ -37,22 +38,43 @@ public class Menu {
     }    
     
     public void menus(String seleccion){
+        
+        Scanner scanner = new Scanner(System.in);
+        double total = 0.0;
+        
         if (seleccion.equalsIgnoreCase("desayuno")){
             System.out.println("Menu de desayuno;");
             mostrarComidas(Desayuno);
+            
+            System.out.println("Seleccione una comida (1-3): ");
+            int opcion = scanner.nextInt();
+            total += Desayuno.get(opcion - 1).getprecio();
+            
         } else if (seleccion.equalsIgnoreCase("almuerzo")){
             System.out.println("Menu almuerzo");
             mostrarComidas(Almuerzo);
+            
+            System.out.println("Seleccione una comida (1-3): ");
+            int opcion = scanner.nextInt();
+            total += Almuerzo.get(opcion - 1).getprecio();
+            
         } else if (seleccion.equalsIgnoreCase("cena")){
             System.out.println("Menu cena");
             mostrarComidas(Cena);
+            
+            System.out.println("Seleccione una comida (1-3): ");
+            int opcion = scanner.nextInt();
+            total += Cena.get(opcion - 1).getprecio();
                     
         }
+        
+        System.out.println("Total a pagar: $ " + total);
     }
     
     private void mostrarComidas(ArrayList<Comida> menu){
-        for (Comida comida : menu){
-            comida.mostrar();
+        for (int i = 0;i< menu.size();i++){
+                Comida comida = menu.get(i);
+                System.out.println((i+1)+ comida.getnombre() + " - $" + comida.getprecio());
         }
     }
 }
